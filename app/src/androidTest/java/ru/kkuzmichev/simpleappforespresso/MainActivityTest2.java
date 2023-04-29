@@ -67,11 +67,17 @@ public class MainActivityTest2 {
         navigationMenuItemView.perform(click());
         ViewInteraction recycleView = onView(withId(R.id.recycle_view));
         recycleView.check(matches(isDisplayed()));
+        //проверка,что список - это RecycleView
+        recycleView.check(CustomViewAssertions.isRecycleView());
+        //добавить проверку количества элементов
+        recycleView.check(matches(CustomViewMatcher.recyclerViewSizeMatcher(10)));
+
         ViewInteraction textView = onView(allOf(withId(R.id.item_number),withText("7")));
         textView.check(matches(isDisplayed()));
         textView.check(matches(withText("7")));
+
     }
 
 
-    
+
 }
